@@ -1,1 +1,37 @@
+import turtle
 
+# Set up the screen
+wn = turtle.Screen()
+wn.title("Cookie Clicker by @s550sarannehq")
+wn.bgcolor("black")
+
+# Create the cookie turtle
+cookie = turtle.Turtle()
+cookie.shape("circle")
+cookie.color("blue")
+cookie.shapesize(stretch_wid=5, stretch_len=5)  # Adjust the size of the circle
+cookie.speed(0)
+
+# Create the score display turtle
+score_display = turtle.Turtle()
+score_display.hideturtle()
+score_display.color("white")
+score_display.penup()
+score_display.goto(0, 250)
+score_display.write("Score: 0", align="center", font=("Courier", 24, "normal"))
+
+# Initialize score
+score = 0
+
+# Function to update score
+def update_score(x, y):
+    global score
+    score += 1
+    score_display.clear()
+    score_display.write(f"Score: {score}", align="center", font=("Courier", 24, "normal"))
+
+# Bind click event to the cookie
+cookie.onclick(update_score)
+
+# Main game loop
+wn.mainloop()
